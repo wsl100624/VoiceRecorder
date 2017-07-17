@@ -17,12 +17,13 @@ import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
 
+    // Properties
     private Button recordingButton;
     private Button stopButton;
     private Button playButton;
     private Button uploadButton;
-    private Button cameraButton;
     private TextView indicateLabel;
+    private Button cameraButton;
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
 
@@ -58,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
         indicateLabel.setEnabled(false);
 
 
+
         recordingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
 
         uploadButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                uploadToServer();
+                uploadToHttpServer();
             }
         });
 
@@ -116,6 +118,13 @@ public class MainActivity extends AppCompatActivity {
         uploadIt.execute();
         uploadButton.setEnabled(false);
         indicateLabel.setText("Uploaded Successfully");
+    }
+
+    private void uploadToHttpServer() {
+        UploadToHttpServer uploadItToHttp = new UploadToHttpServer();
+        uploadItToHttp.execute();
+        uploadButton.setEnabled(false);
+        indicateLabel.setText("Uploaded to Http Server Successfully");
     }
 
     private void initializeMediaRecord(){
