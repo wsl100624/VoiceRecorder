@@ -39,11 +39,6 @@ public class UploadToHttpServer extends AsyncTask<String, String, String> {
             // Post header
             HttpPost httppost = new HttpPost(url);
 
-//            InputStreamEntity reqEntity = new InputStreamEntity(
-//                    new FileInputStream(file), -1);
-//            reqEntity.setContentType("binary/octet-stream");
-//            reqEntity.setChunked(true);
-
             File file = new File(filePath);
             FileBody fileBody = new FileBody(file);
 
