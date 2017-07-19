@@ -20,6 +20,7 @@ import java.util.concurrent.TimeUnit;
 
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.Headers;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
@@ -205,39 +206,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void uploadFile() {
-
-        //请求地址
-        String requestUrl = "http://10.0.1.26/uploadWithOkhttp.php";
-        //创建File
-        String filePath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/voices/audio.3gp";
-        File file = new File(filePath);
-        //创建RequestBody
-        RequestBody body = RequestBody.create(MediaType.parse("application/octet-stream"), file);
-        //创建Request
-        OkHttpClient mOkHttpClient = new OkHttpClient();
-        final Request request = new Request.Builder().url(requestUrl).post(body).build();
-        final Call call = mOkHttpClient.newBuilder().writeTimeout(50, TimeUnit.SECONDS).build().newCall(request);
-        call.enqueue(new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                Log.e(TAG, "Failed Response ----->" + e);
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                if (response.isSuccessful()) {
-                    String string = response.body().string();
-                    Log.e(TAG, "Response ----->" + string);
-                } else {
-                    Log.e(TAG, "Response ----->" + "Responded but failed to upload");
-                }
-            }
-        });
-
+        UploadWithOkhttp uploadWithOkhttp = new UploadWithOkhttp();
+        uploadWithOkhttp.execute();
         uploadButton.setEnabled(false);
-        //indicateLabel.setText("Uploaded to Http Server Successfully");
-        indicateLabel.setText("Sent request and responded");
-
+        indicateLabel.setText("Uploaded to server successfully");
     }
 
 
