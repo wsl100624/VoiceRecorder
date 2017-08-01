@@ -20,7 +20,7 @@ import static android.content.ContentValues.TAG;
 
 public class UploadWithOkhttp extends AsyncTask<Void, Void, Void>{
     //请求地址
-    String requestUrl = "http://10.0.1.29/uploadWithOkhttp.php";
+    String requestUrl = "http://140.209.68.84/uploadWithOkhttp.php";
 
     //创建File
     String filePath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/voices/audio.3gp";
@@ -34,7 +34,7 @@ public class UploadWithOkhttp extends AsyncTask<Void, Void, Void>{
             .setType(MultipartBody.FORM)
             .addPart(Headers.of(
                     "Content-Disposition",
-                    "form-data; name = \"audio\"; filename = \"voiceFile\""), fileBody)
+                    "form-data; name = \"audio\"; filename = \"audio.3gp\""), fileBody)
             .build();
 
     //创建Request
