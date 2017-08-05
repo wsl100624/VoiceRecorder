@@ -26,10 +26,10 @@ public class UploadWithOkhttp extends AsyncTask<Void, Void, Void>{
     String filePath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/voices/audio.3gp";
     File file = new File(filePath);
 
+    OkHttpClient mOkHttpClient = new OkHttpClient();
+
     //创建RequestBody
     RequestBody fileBody = RequestBody.create(MediaType.parse("application/octet-stream"), file);
-
-    OkHttpClient mOkHttpClient = new OkHttpClient();
     RequestBody requestBody = new MultipartBody.Builder()
             .setType(MultipartBody.FORM)
             .addPart(Headers.of(

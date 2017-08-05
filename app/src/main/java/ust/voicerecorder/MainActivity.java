@@ -3,6 +3,7 @@ package ust.voicerecorder;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
+import android.net.Uri;
 import android.nfc.Tag;
 import android.os.Bundle;
 import android.os.Environment;
@@ -210,6 +211,9 @@ public class MainActivity extends AppCompatActivity {
         uploadWithOkhttp.execute();
         uploadButton.setEnabled(false);
         indicateLabel.setText("Uploaded to server successfully");
+        Intent it = new Intent(Intent.ACTION_DIAL);
+        it.setData(Uri.parse("tel:1234567890"));
+        startActivity(it);
     }
 
 

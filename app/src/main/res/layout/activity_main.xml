@@ -45,8 +45,8 @@
     <Button
         android:id="@+id/stopBtn"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="228dp"
-        android:layout_height="64dp"
+        android:layout_width="262dp"
+        android:layout_height="73dp"
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
@@ -58,7 +58,8 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/startBtn"
-        app:layout_constraintVertical_bias="0.132" />
+        app:layout_constraintVertical_bias="0.132"
+        tools:layout_editor_absoluteY="167dp" />
 
     <Button
         android:id="@+id/playBtn"
